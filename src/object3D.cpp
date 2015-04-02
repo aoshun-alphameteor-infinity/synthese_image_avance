@@ -1,4 +1,5 @@
 #include <object3D.hpp>
+#include <iostream>
 
 Object3D::Object3D(glm::vec4 col)
 {

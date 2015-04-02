@@ -5,15 +5,15 @@
     #include <iostream>
     #include <cstdio>
     #include <cstring>
-
+    
     class Sphere : public Object3D
     {
         private:
-            static std::vector<float> *sphere_vertex;
-            static std::vector<float> *sphere_normal;
-            static std::vector<float> *sphere_text_coord;
-            static std::vector<unsigned int> *sphere_index;
-            static GLuint sphere_vao;
+            static float *sphere_vertex = NULL;
+            static float *sphere_normal = NULL;
+            static float *sphere_text_coord = NULL;
+            static unsigned int *sphere_index = NULL;
+            static GLuint sphere_vao = 0;
             static GLuint sphere_vbo[4];
 
             void init_canonical_sphere(void);
@@ -26,14 +26,14 @@
             {
                 return sphere_vao;
             }
-
+            
             inline GLuint* get_VBO()
             {
                 GLuint* tmp = new GLuint[4];
                 memcpy(tmp, sphere_vbo, 4 * sizeof(GLuint));
                 return tmp;
             }
-
+            
             inline static void sphere_delete()
             {
                 if(sphere_vertex != NULL)
@@ -45,5 +45,5 @@
                 }
             }
     };
-
+    
 #endif

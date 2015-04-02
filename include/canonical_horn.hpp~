@@ -4,21 +4,21 @@
     #include <object3D.hpp>
     #include <iostream>
 
-
+    
     class Horn : public Object3D
     {
         private :
-            static std::vector<float> *horn_vertex;
-            static std::vector<float> *horn_normal;
-            static std::vector<float> * horn_text_coord;
-            static std::vector<unsigned int> * horn_index;
-            static GLuint horn_vao;
+            static float *horn_vertex = NULL; 
+            static float *horn_normal = NULL;
+            static float * horn_text_coord = NULL;
+            static unsigned int * horn_index = NULL;
+            static GLuint horn_vao = 0;
             static GLuint horn_vbo[4];
 
 
             void init_canonical_horn(void);
             void init_vao(void);
-
+        
         public:
             Horn(glm::vec4 col);
 
@@ -26,14 +26,14 @@
             {
                 return horn_vao;
             }
-
+            
             inline GLuint* get_VBO()
             {
                 GLuint* tmp = new GLuint[4];
                 memcpy(tmp, horn_vbo, 4 * sizeof(GLuint));
                 return tmp;
             }
-
+            
             inline static void horn_delete()
             {
                 if(horn_vertex != NULL)
@@ -45,5 +45,5 @@
                 }
             }
     };
-
+    
 #endif

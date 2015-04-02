@@ -1,12 +1,13 @@
 #include <onagre.hpp>
 
-Shader *Onagre::s = new Shader("base");
+Shader *Onagre::s = NULL;
 
 Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     Node* body;
     Object3D* obj;
     glm::vec3 point;
     glm::vec3 vector;
+    std::cerr << "onagre main body" << std::endl;
 
     body = new Node();
 
@@ -192,6 +193,7 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     Object3D* obj;
     glm::vec3 point;
     glm::vec3 vector;
+    std::cerr << "onagre spoon" << std::endl;
 
     spoon = new Node();
 
@@ -249,6 +251,7 @@ Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     Object3D* obj;
     glm::vec3 point;
     glm::vec3 vector;
+    std::cerr << "onagre wheel" << std::endl;
 
     wheel = new Node();
 
@@ -293,6 +296,9 @@ Tree* Onagre::create_onagre(glm::vec4 color) {
 
     glm::vec3 point(0., 0.048, 0.);
     glm::vec3 vector(.2, .2, .2);
+    if(s == NULL)
+        s = new Shader("base");
+    std::cerr << "create onagre" << std::endl;
 
     onagre = new Anim_Node();
     onagre->apply_translation(point);

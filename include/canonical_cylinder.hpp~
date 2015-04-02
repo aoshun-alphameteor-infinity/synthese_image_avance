@@ -7,30 +7,30 @@
     class Cylinder : public Object3D
     {
         private:
-            static std::vector<float> *cylinder_vertex;
-            static std::vector<float> *cylinder_normal;
-            static std::vector<float> *cylinder_texcoord;
-            static std::vector<unsigned int> *cylinder_index;
+            static float *cylinder_vertex = NULL;
+            static float *cylinder_normal = NULL;
+            static float *cylinder_texcoord = NULL;
+            static unsigned int *cylinder_index = NULL;
             static GLuint cylinder_vao;
             static GLuint cylinder_vbo[4];
-
+            
             void init_canonical_cylinder(void);
-
+            
         public:
             Cylinder(glm::vec4 col);
-
+            
             inline GLuint get_VAO()
             {
                 return cylinder_vao;
             }
-
+            
             inline GLuint* get_VBO()
             {
                 GLuint* tmp = new GLuint[4];
                 memcpy(tmp, cylinder_vbo, 4 * sizeof(GLuint));
                 return tmp;
             }
-
+            
             inline static void cylinder_delete()
             {
                 if(cylinder_vertex != NULL)
@@ -43,5 +43,5 @@
             }
     };
 
-
+    
 #endif

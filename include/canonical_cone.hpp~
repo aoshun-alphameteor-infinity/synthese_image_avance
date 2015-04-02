@@ -2,37 +2,35 @@
 #define __CANONICAL_CONE_HPP__
 
     #include <object3D.hpp>
-    #include <iostream>
     #include <cstring>
-
+    
     class Cone : public Object3D
     {
         private:
-            static std::vector<float> *cone_vertex;
-            static std::vector<float> *cone_normal;
-            static std::vector<float> *cone_texcoord;
-            static std::vector<unsigned int> *cone_index;
-            static bool is_initialized;
+            static float *cone_vertex = NULL;
+            static float *cone_normal = NULL;
+            static float *cone_texcoord = NULL;
+            static unsigned int *cone_index = NULL;
             static GLuint cone_vao;
             static GLuint cone_vbo[4];
-
+            
             void init_canonical_cone(void);
-
+        
         public:
             Cone(glm::vec4 col);
-
+            
             inline GLuint get_VAO()
             {
                 return cone_vao;
             }
-
+            
             inline GLuint* get_VBO()
             {
                 GLuint* tmp = new GLuint[4];
                 memcpy(tmp, cone_vbo, 4 * sizeof(GLuint));
                 return tmp;
             }
-
+            
             inline static void cone_delete()
             {
                 if(cone_vertex != NULL)
@@ -44,6 +42,6 @@
                 }
             }
     };
-
-
+    
+    
 #endif

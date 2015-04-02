@@ -4,7 +4,9 @@
 int nb_turn = 0;
 int fire_phasis = 0;
 bool mod_anim = true;
-static Tree* root = new Node();
+static Node* root = new Node();
+Shader* s = NULL;
+using namespace std;
 
 void Interface::change_animation(){
     if(mod_anim == true) {
@@ -19,6 +21,7 @@ Interface::Interface(int width, int height)
     this -> width = width;
     this -> height = height;
     this -> display_mode = 0;
+    this -> camera = Camera();
 };
 
 Interface::~Interface()
@@ -32,17 +35,35 @@ void Interface::keyboard_function(unsigned char c, int x, int y)
     case 27: // quit
         exit(EXIT_SUCCESS);
         break;
+    case 'a':
+        camera.move_up(.1);
+        break;
+    case 'e':
+        camera.move_down(.1);
+        break;
     case 'z':
-        camera.move_front(1);
+        camera.move_front(.1);
         break;
     case 'q':
-        camera.move_left(1);
+        camera.move_left(.1);
         break;
     case 's':
-        camera.move_back(1);
+        camera.move_back(.1);
         break;
     case 'd':
-        camera.move_right(1);
+        camera.move_right(.1);
+        break;
+    case 'o':
+        camera.look_up(5. * M_PI / 180.);
+        break;
+    case 'k':
+        camera.look_left(5. * M_PI / 180.);
+        break;
+    case 'l':
+        camera.look_down(5. * M_PI / 180.);
+        break;
+    case 'm':
+        camera.look_right(5. * M_PI / 180.);
         break;
     case 'r':
         reset();
@@ -83,6 +104,7 @@ void Interface::idle_function()
 {
     root->animation();
     nb_turn++;
+	glutPostRedisplay();
 };
 
 void Interface::reshape(int width, int height)
@@ -96,13 +118,26 @@ void Interface::reshape(int width, int height)
 void Interface::init(void) {
     int i, j;
     nb_turn = 0;
-    glm::vec4 color = {0.5, 0.5, 0.24, 1.00};
+    glm::vec4 color = {0., 0., 1., 1.00};
+    Object3D* o = new Cone(color);
 
-    ((Node*)root)->add_children(Scene::create_scene());
+
+    //((Node*)root)->add_children(Scene::create_scene());
+    root->add_children(Scene::create_scene());
+
+
+	/// GL INITIALISATION
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
+	glShadeModel( GL_SMOOTH );
+	glDisable(GL_BLEND);
+	glCullFace(GL_BACK);
+	glDisable( GL_CULL_FACE );
 
 }
 
 void Interface::reset(void) {
+    delete root;
     root = new Node();
     init();
     nb_turn = 0;
@@ -111,5 +146,9 @@ void Interface::reset(void) {
 }
 
 void Interface::draw(void) {
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    //glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+    glEnable(GL_DEPTH_TEST);
     root->draw(this -> camera);
+    glutSwapBuffers();
 }

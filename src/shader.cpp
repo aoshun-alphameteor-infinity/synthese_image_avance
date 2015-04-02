@@ -2,7 +2,6 @@
 
 int Shader::check_link_error(GLuint program)
 {
-    std::cerr << "check link error" << std::endl;
     // Get link error log size and print it eventually
     int logLength;
     glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
@@ -22,10 +21,7 @@ int Shader::check_link_error(GLuint program)
 
 GLuint Shader::compile_shader(GLenum shaderType, const char * sourceBuffer, int bufferSize)
 {
-    std::cerr << "compile shader" << std::endl;
-    CHECK_GL;
     GLuint shaderObject = glCreateShader(shaderType);
-    std::cerr << "truc" << std::endl;
     const char * sc[1] = { sourceBuffer };
     glShaderSource(shaderObject, 1, sc, NULL);
     glCompileShader(shaderObject);
@@ -35,7 +31,6 @@ GLuint Shader::compile_shader(GLenum shaderType, const char * sourceBuffer, int 
 
 GLuint Shader::compile_shader_from_file(GLenum shaderType, const char * path)
 {
-    std::cerr << "compile shader from file" << std::endl;
     FILE * shaderFileDesc = fopen( path, "rb" );
     if (!shaderFileDesc)
         return 0;
@@ -52,7 +47,6 @@ GLuint Shader::compile_shader_from_file(GLenum shaderType, const char * path)
 
 int Shader::check_compile_error(GLuint shader, const char ** sourceBuffer)
 {
-    std::cerr << "check compile error" << std::endl;
     // Get error log size and print it eventually
     int logLength;
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
@@ -83,7 +77,6 @@ Shader::Shader(std::string name)
     char vert_name[100], frag_name[100];
     sprintf(vert_name, "%s.vert", name.c_str());
     sprintf(frag_name, "%s.frag", name.c_str());
-    std::cerr << "vertex_name is " << vert_name << " and fragment_name is " << frag_name << std::endl;
     GLuint vertID = compile_shader_from_file(GL_VERTEX_SHADER, vert_name);
     GLuint fragID = compile_shader_from_file(GL_FRAGMENT_SHADER, frag_name);
     this -> program = glCreateProgram();

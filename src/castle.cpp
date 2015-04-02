@@ -1,11 +1,12 @@
 #include <castle.hpp>
 
-Shader *Castle::s = new Shader("base");
+Shader *Castle::s = NULL;
 
 Tree* Castle::create_tower_top(void){
     Node* top = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
+    std::cerr << "castle tower top" << std::endl;
 
     point.x = point.z = 0.0;
 
@@ -41,6 +42,7 @@ Tree* Castle::create_tower(void){
     Tree* piece;
     Object3D* objet;
     glm::vec3 h(0.65, 1.2, 0.65);
+    std::cerr << "castle tower" << std::endl;
 
     piece = create_tower_top();
     tower -> add_children(piece);
@@ -59,6 +61,7 @@ Tree* Castle::create_wall(void){
     Node* wall = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
+    std::cerr << "castle wall" << std::endl;
 
     objet = new Cube(yellow);
     vecteur.x = 0.4;
@@ -88,6 +91,7 @@ Tree* Castle::create_wall_with_gate(void){
     Node* wall = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
+    std::cerr << "castle wall with gate" << std::endl;
 
     objet = new Cube(red);
     vecteur.x = 0.15;
@@ -148,6 +152,8 @@ Tree* Castle::create_castle(void){
     Tree* piece;
     Object3D* objet;
     glm::vec3 point, vecteur;
+    s = new Shader("base");
+    std::cerr << "create castle" << std::endl;
 
     /* dungeon */
     objet = new Cube(yellow);

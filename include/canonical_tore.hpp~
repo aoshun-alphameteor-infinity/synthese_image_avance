@@ -4,20 +4,20 @@
     #include <object3D.hpp>
     #include <iostream>
 
-
+    
     class Tore : public Object3D
     {
         private:
-            static std::vector<float> *tore_vertex;
-            static std::vector<float> *tore_normal;
-            static std::vector<float> *tore_texcoord;
-            static std::vector<unsigned int> *tore_index;
+            static float *tore_vertex;
+            static float *tore_normal;
+            static float *tore_texcoord;
+            static unsigned int *tore_index;
             static GLuint tore_vao;
             static GLuint tore_vbo[4];
 
             void init_canonical_tore(void);
             void init_vao(void);
-
+        
         public:
             Tore(glm::vec4 col);
 
@@ -25,24 +25,24 @@
             {
                 return tore_vao;
             }
-
+            
             inline GLuint* get_VBO()
             {
                 GLuint* tmp = new GLuint[4];
                 memcpy(tmp, tore_vbo, 4 * sizeof(GLuint));
                 return tmp;
             }
-
+            
             inline static void tore_delete()
             {
                 if(tore_vertex != NULL)
                 {
                     delete tore_vertex;
                     delete tore_normal;
-                    delete tore_texcoord;
+                    delete tore_text_coord;
                     delete tore_index;
                 }
             }
     };
-
+    
 #endif

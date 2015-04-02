@@ -28,14 +28,18 @@ void Leaf::sub_draw(Matrix mt)
     {
         transfo = mat_d * this->obj->get_Mt();
 
+        glUseProgram(this -> shader -> get_id());
+
         this->shader->upload_textures();
 
         this->shader->active_textures();
 
         float* t = (float*)transfo;
         /* Upload Uniform data */
-        glUniformMatrix4fv(glGetUniformLocation(this -> shader -> get_id(), "modelviewProjection"), 1, GL_FALSE, t);
+        glUniformMatrix4fv(glGetUniformLocation(this -> shader -> get_id(), "modelviewProjection"), 1, GL_TRUE, t);
 
         this->obj->draw();
+
+        glUseProgram(0);
     }
 }

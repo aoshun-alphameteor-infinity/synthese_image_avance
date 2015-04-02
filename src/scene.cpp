@@ -1,12 +1,14 @@
 #include <scene.hpp>
 
-Shader *Scene::s = new Shader("base");
+Shader *Scene::s = NULL;
 
 Tree* Scene::create_scene(void) {
     Object3D* obj;
     Node* tree;
     Tree* node;
     glm::vec3 point, vector;
+    s = new Shader("base");
+    std::cerr << "create scene" << std::endl;
 
     glm::vec4 brown(.57, .43, .15, 1.);
     glm::vec4 blue(.12, .5, .5, 1.);
@@ -68,6 +70,7 @@ Tree* Scene::create_scene(void) {
 
     vector.x = vector.z = vector.y = .5;
     tree -> apply_homothety(vector);
+    std::cerr << "end create scene" << std::endl;
     return tree;
 }
 
@@ -78,6 +81,7 @@ Tree* Scene::onagre_ring(void) {
     Tree* node;
     glm::vec4 color(0.57, 0.43, 0.15, 1.);
     glm::vec3 point(15., 0., 0.);
+    std::cerr << "onagre ring" << std::endl;
 
     n = 15;
     alpha = 2*PI/n;
@@ -89,5 +93,6 @@ Tree* Scene::onagre_ring(void) {
         node -> apply_translation(point);
         tree -> add_children(node);
     }
+    std::cerr << "end onagre ring" << std::endl;
     return tree;
 }

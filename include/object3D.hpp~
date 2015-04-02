@@ -1,8 +1,11 @@
 #ifndef __OBJECT3D_HPP__
 #define __OBJECT3D_HPP__
 
-    #include <vector>
     #include <matrix.hpp>
+    #define GLM_FORCE_RADIANS
+    #include <glm/glm.hpp>
+    #include <glm/vec4.hpp>
+    #include <glm/vec3.hpp>
     #include <glm/gtc/type_ptr.hpp>
     #include <GL/glew.h>
     #include <GL/gl.h>
@@ -21,10 +24,10 @@
             Matrix Mt;
 
         protected:
-            std::vector<float> * vertex;
-            std::vector<float> * normal;
-            std::vector<float> * text_coord;
-            std::vector<unsigned int> *index;
+            float * vertex;
+            float * normal;
+            float * text_coord;
+            unsigned int *index;
             int nb_triangles;
 
         public:

@@ -8,7 +8,7 @@
 precision highp float;
 precision highp int;
 
-uniform mat4 MVP;
+uniform mat4 modelviewProjection;
 uniform float Time;
 uniform vec3 spotlight;
 
@@ -16,7 +16,7 @@ in int gl_VertexID;
 in int gl_InstanceID;
 
 layout(location = POSITION) in vec3 Position;
-layout(location = NORMAL) in vec4 Normal;
+layout(location = NORMAL) in vec3 Normal;
 layout(location = TEXCOORD) in vec2 TexCoord;
 
 out gl_PerVertex
@@ -58,7 +58,7 @@ void main()
         default :
             pos = Position;
     }
-    gl_Position = MVP * vec4(pos, 1.0);
+    gl_Position = modelviewProjection * vec4(pos, 1.0);
     Out.TexCoord = TexCoord;
     Out.NormalCoord = Normal;
     Out.PositionCoord = Position;

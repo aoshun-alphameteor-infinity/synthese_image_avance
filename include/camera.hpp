@@ -25,7 +25,7 @@
 
         public:
             Camera();
-            Camera(glm::vec3 pos_init, glm::vec3 dir_init, glm::vec3 top_init = glm::vec3(0.0, 1.0, 0.0), glm::vec3 orient_init = glm::vec3());
+            Camera(glm::vec3 pos_init, glm::vec3 dir_init = glm::vec3(0.0, 0.0, -1.0), glm::vec3 top_init = glm::vec3(0.0, 1.0, 0.0), glm::vec3 orient_init = glm::vec3());
 
             void move_front(float step);
             void move_back(float step);
