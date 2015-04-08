@@ -16,13 +16,13 @@
             Shader *shader;
 
         protected:
-            void sub_draw(Matrix mt);
 
         public:
             Leaf(Object3D* O, Shader* shader);
             ~Leaf();
-            void animation(){};
-            void draw(Camera cam);
+            virtual void animation(){};
+            virtual void sub_draw(Matrix mt, Matrix mn);
+            virtual void draw(Camera cam);
     };
 
 #endif

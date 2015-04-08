@@ -42,18 +42,20 @@ int Node::add_children(Tree* T)
 void Node::draw(Camera cam)
 {
     Matrix mt = cam.get_transformation();
-    this->sub_draw(mt);
+    Matrix mn;
+    this->sub_draw(mt, mn);
 }
 
-void Node::sub_draw(Matrix mt)
+void Node::sub_draw(Matrix mt, Matrix mn)
 {
     unsigned int i;
-    Matrix mat_d;
+    Matrix mat_d, mat_n;
 
     mat_d = mt * this->Mt;
+    mat_n = mn * this->Mn;
 
     for(i = 0; i < this->children.size(); i++)
-        this->children[i]->sub_draw(mat_d);
+        this->children[i]->sub_draw(mat_d, mat_n);
 }
 
 void Node::animation()

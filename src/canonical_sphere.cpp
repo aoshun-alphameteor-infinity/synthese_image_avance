@@ -148,7 +148,6 @@ Sphere::Sphere(glm::vec4 col) : Object3D(col)
 {
     if(sphere_vertex == NULL) {
         init_canonical_sphere();
-        std::cerr << "sphere vao init" << std::endl;
         init_vao();
     }
     vertex = sphere_vertex;

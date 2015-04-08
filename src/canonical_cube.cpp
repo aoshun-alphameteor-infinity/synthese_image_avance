@@ -130,7 +130,6 @@ Cube::Cube(glm::vec4 color) : Object3D(color)
     if(cube_vertex == NULL)
     {
         init_canonical_cube();
-        std::cerr << "cube vao init" << std::endl;
         init_vao();
     }
     vertex = cube_vertex;

@@ -12,12 +12,13 @@
     {
         protected:
             Matrix Mt;
-          //Matrix Mn;
+            Matrix Mn;
 
         public:
             Tree();
             ~Tree();
             Matrix get_Mt();
+            Matrix get_Mn();
             void apply_translation(float x, float y, float z);
             void apply_translation(glm::vec3 vector);
             void apply_homothety(float x, float y, float z);
@@ -28,7 +29,7 @@
             void apply_rotation_on_y_first(float angle);
             virtual void animation() = 0;
             virtual void draw(Camera cam) = 0;
-            virtual void sub_draw(Matrix mt) = 0;
+            virtual void sub_draw(Matrix mt, Matrix mn) = 0;
     };
 
 #endif

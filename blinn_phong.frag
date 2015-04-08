@@ -19,7 +19,6 @@ layout(location = FRAG_COLOR, index = 0) out vec4 FragColor;
 
 in block
 {
-    float time;
     vec2 TexCoord;
     vec4 NormalCoord;
     vec3 PositionCoord;

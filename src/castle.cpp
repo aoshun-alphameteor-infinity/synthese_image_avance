@@ -1,12 +1,12 @@
 #include <castle.hpp>
 
 Shader *Castle::s = NULL;
+glm::vec4 color(.5, 0., .7, 1.);
 
 Tree* Castle::create_tower_top(void){
     Node* top = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
-    std::cerr << "castle tower top" << std::endl;
 
     point.x = point.z = 0.0;
 
@@ -42,7 +42,6 @@ Tree* Castle::create_tower(void){
     Tree* piece;
     Object3D* objet;
     glm::vec3 h(0.65, 1.2, 0.65);
-    std::cerr << "castle tower" << std::endl;
 
     piece = create_tower_top();
     tower -> add_children(piece);
@@ -61,7 +60,6 @@ Tree* Castle::create_wall(void){
     Node* wall = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
-    std::cerr << "castle wall" << std::endl;
 
     objet = new Cube(yellow);
     vecteur.x = 0.4;
@@ -91,7 +89,6 @@ Tree* Castle::create_wall_with_gate(void){
     Node* wall = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
-    std::cerr << "castle wall with gate" << std::endl;
 
     objet = new Cube(red);
     vecteur.x = 0.15;
@@ -101,8 +98,8 @@ Tree* Castle::create_wall_with_gate(void){
     wall -> add_child(objet, s);
 
     objet = new Cube(yellow);
-    point.x = point.z = 0.0;
-    point.y = 1.9;
+    point.x = point.y = 0.0;
+    point.z = 1.9;
     vecteur.x = 0.4;
     vecteur.z = 1.1;
     vecteur.y = 1.5;
@@ -111,8 +108,8 @@ Tree* Castle::create_wall_with_gate(void){
     wall -> add_child(objet, s);
 
     objet = new Cube(yellow);
-    point.x = point.z = 0.0;
-    point.y = -1.9;
+    point.x = point.y = 0.0;
+    point.z = -1.9;
     vecteur.x = 0.4;
     vecteur.z = 1.1;
     vecteur.y = 1.5;
@@ -153,7 +150,6 @@ Tree* Castle::create_castle(void){
     Object3D* objet;
     glm::vec3 point, vecteur;
     s = new Shader("base");
-    std::cerr << "create castle" << std::endl;
 
     /* dungeon */
     objet = new Cube(yellow);
@@ -221,7 +217,7 @@ Tree* Castle::create_castle(void){
     point.x = -7.3*cos(PI/4);
     point.z = -7.3*sin(PI/4);
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(PI/4);
+    piece -> apply_rotation_on_y(-PI/4);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 
@@ -229,7 +225,7 @@ Tree* Castle::create_castle(void){
     point.x = 0.0;
     point.z = -7.3;
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(PI/2);
+    piece -> apply_rotation_on_y(-PI/2);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 
@@ -237,7 +233,7 @@ Tree* Castle::create_castle(void){
     point.x = -7.3*cos(3*PI/4);
     point.z = -7.3*sin(3*PI/4);
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(3*PI/4);
+    piece -> apply_rotation_on_y(-3*PI/4);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 
@@ -245,7 +241,7 @@ Tree* Castle::create_castle(void){
     point.x = 7.3;
     point.z = 0.0;
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(PI);
+    piece -> apply_rotation_on_y(-PI);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 
@@ -253,7 +249,7 @@ Tree* Castle::create_castle(void){
     point.x = -7.3*cos(-3*PI/4);
     point.z = -7.3*sin(-3*PI/4);
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(-3*PI/4);
+    piece -> apply_rotation_on_y(3*PI/4);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 
@@ -261,7 +257,7 @@ Tree* Castle::create_castle(void){
     point.x = 0.0;
     point.z = 7.3;
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(-PI/2);
+    piece -> apply_rotation_on_y(PI/2);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 
@@ -269,7 +265,7 @@ Tree* Castle::create_castle(void){
     point.x = -7.3*cos(-PI/4);
     point.z = -7.3*sin(-PI/4);
     piece -> apply_translation(point);
-    piece -> apply_rotation_on_y(-PI/4);
+    piece -> apply_rotation_on_y(PI/4);
     piece -> apply_homothety(vecteur);
     castle -> add_children(piece);
 

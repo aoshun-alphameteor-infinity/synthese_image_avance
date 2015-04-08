@@ -2,12 +2,12 @@
 
 Shader *Onagre::s = NULL;
 
+
 Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     Node* body;
     Object3D* obj;
     glm::vec3 point;
     glm::vec3 vector;
-    std::cerr << "onagre main body" << std::endl;
 
     body = new Node();
 
@@ -72,14 +72,14 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     vector.y = .1;
     obj = new Horn(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_z(PI/2.);
+    obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
     point.x = -.8;
     obj = new Horn(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_z(-PI/2.);
+    obj->apply_rotation_on_z(PI/2.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
@@ -88,8 +88,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     vector.y = .7;
     obj = new Cylinder(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(PI/2.);
-    obj->apply_rotation_on_z(PI/2.);
+    obj->apply_rotation_on_x(-PI/2.);
+    obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
@@ -115,14 +115,14 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     vector.z = .3;
     obj = new Cube(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(PI/4.);
+    obj->apply_rotation_on_x(3*PI/4.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
     point.x = .5;
     obj = new Cube(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(PI/4.);
+    obj->apply_rotation_on_x(3*PI/4.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
@@ -130,15 +130,14 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     point.z = .55;
     obj = new Cube(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(-PI/4.);
+    obj->apply_rotation_on_x(PI/4.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
     point.x = -.5;
-    point.z = -.92;
     obj = new Cube(color);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(-PI/4.);
+    obj->apply_rotation_on_x(PI/4.);
     obj->apply_homothety(vector);
     body->add_child(obj, s);
 
@@ -193,7 +192,6 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     Object3D* obj;
     glm::vec3 point;
     glm::vec3 vector;
-    std::cerr << "onagre spoon" << std::endl;
 
     spoon = new Node();
 
@@ -216,7 +214,7 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     obj->apply_rotation_on_z(PI/2.);
     obj->apply_rotation_on_x(PI/2.);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(PI/3.);
+    obj->apply_rotation_on_x(-PI/3.);
     obj->apply_homothety(vector);
     spoon->add_child(obj, s);
 
@@ -227,7 +225,7 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     obj->apply_rotation_on_z(PI/2.);
     obj->apply_rotation_on_x(PI/2.);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(PI/3. + PI/2.);
+    obj->apply_rotation_on_x(PI/6.);
     obj->apply_homothety(vector);
     spoon->add_child(obj, s);
 
@@ -239,7 +237,7 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     obj->apply_rotation_on_z(PI/2.);
     obj->apply_rotation_on_x(PI/2.);
     obj->apply_translation(point);
-    obj->apply_rotation_on_x(PI/3. + PI/2.);
+    obj->apply_rotation_on_x(PI/6.);
     obj->apply_homothety(vector);
     spoon->add_child(obj, s);
 
@@ -251,7 +249,6 @@ Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     Object3D* obj;
     glm::vec3 point;
     glm::vec3 vector;
-    std::cerr << "onagre wheel" << std::endl;
 
     wheel = new Node();
 
@@ -298,7 +295,6 @@ Tree* Onagre::create_onagre(glm::vec4 color) {
     glm::vec3 vector(.2, .2, .2);
     if(s == NULL)
         s = new Shader("base");
-    std::cerr << "create onagre" << std::endl;
 
     onagre = new Anim_Node();
     onagre->apply_translation(point);

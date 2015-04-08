@@ -19,6 +19,7 @@
         private:
             glm::vec4 color;
             Matrix Mt;
+            Matrix Mn;
 
         protected:
             std::vector<float> * vertex;
@@ -31,6 +32,7 @@
             Object3D(glm::vec4 color);
 
             Matrix get_Mt();
+            Matrix get_Mn();
             void set_Mt(Matrix m);
 
             void apply_translation(float x, float y, float z);

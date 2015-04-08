@@ -9,7 +9,7 @@ precision highp float;
 precision highp int;
 
 uniform mat4 modelviewProjection;
-uniform float Time;
+uniform mat4 normalTransformation;
 uniform vec3 spotlight;
 
 in int gl_VertexID;
@@ -26,7 +26,6 @@ out gl_PerVertex
 
 out block
 {
-    float time;
     vec2 TexCoord;
     vec4 NormalCoord;
     vec3 PositionCoord;
@@ -60,8 +59,7 @@ void main()
     }
     gl_Position = modelviewProjection * vec4(pos, 1.0);
     Out.TexCoord = TexCoord;
-    Out.NormalCoord = Normal;
+    Out.NormalCoord = normalTransfo * vec4(Normal, 0.0);
     Out.PositionCoord = Position;
-    Out.time = Time;
     Out.lightPosition = spotlight;
 }

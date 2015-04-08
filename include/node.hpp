@@ -19,7 +19,7 @@
             int add_child(Object3D* O, Shader* shader);
             int add_children(Tree* T);
             void draw(Camera cam);
-            void sub_draw(Matrix mt);
+            void sub_draw(Matrix mt, Matrix mn);
             virtual void animation();
     };
 
