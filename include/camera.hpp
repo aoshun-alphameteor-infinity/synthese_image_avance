@@ -39,6 +39,11 @@
             void look_left(float angle);
             void look_right(float angle);
 
+            glm::vec3 get_position()
+            {
+                return position;
+            };
+
 
             Matrix get_projection();
 

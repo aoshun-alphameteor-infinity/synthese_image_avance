@@ -13,7 +13,7 @@ Leaf::~Leaf()
 
 void Leaf::draw(Camera cam)
 {
-    Matrix mt = cam.get_transformation();
+    Matrix mt = cam.get_projection() * cam.get_transformation();
     Matrix mn = Matrix();
     this->sub_draw(mt, mn);
 }

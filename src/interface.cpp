@@ -5,6 +5,7 @@ int nb_turn = 0;
 int fire_phasis = 0;
 bool mod_anim = true;
 static Node* root = new Node();
+static const float STEP_DEP = 0.1;
 Shader* s = NULL;
 using namespace std;
 
@@ -21,7 +22,7 @@ Interface::Interface(int width, int height)
     this -> width = width;
     this -> height = height;
     this -> display_mode = 0;
-    this -> camera = Camera();
+    this -> camera = Camera(glm::vec3(3, 3, 3), glm::vec3(-1, -1, -1));
 };
 
 Interface::~Interface()
@@ -35,38 +36,26 @@ void Interface::keyboard_function(unsigned char c, int x, int y)
     case 27: // quit
         exit(EXIT_SUCCESS);
         break;
-    case 'a':
-        camera.move_up(.1);
+    case 'i' :
+        glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
         break;
-    case 'e':
-        camera.move_down(.1);
+    case 'I' :
+        glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
         break;
     case 'z':
-        camera.move_front(.1);
-        break;
-    case 'q':
-        camera.move_left(.1);
-        break;
-    case 's':
-        camera.move_back(.1);
-        break;
-    case 'd':
-        camera.move_right(.1);
-        break;
-    case 'o':
         camera.look_up(5. * M_PI / 180.);
         break;
-    case 'k':
+    case 'q':
         camera.look_left(5. * M_PI / 180.);
         break;
-    case 'l':
+    case 's':
         camera.look_down(5. * M_PI / 180.);
         break;
-    case 'm':
+    case 'd':
         camera.look_right(5. * M_PI / 180.);
         break;
     case 'r':
-        reset();
+        //reset();
         break;
     case 'f':
         change_animation();
@@ -86,6 +75,24 @@ void Interface::keyboard_special_function(int c, int x, int y)
         case GLUT_KEY_F7 : case GLUT_KEY_F8 : case GLUT_KEY_F9 :
             display_mode = c - GLUT_KEY_F1;
             break;
+        case GLUT_KEY_PAGE_UP:
+            camera.move_up(STEP_DEP);
+            break;
+        case GLUT_KEY_PAGE_DOWN:
+            camera.move_down(STEP_DEP);
+            break;
+        case GLUT_KEY_UP:
+            camera.move_front(STEP_DEP);
+            break;
+        case GLUT_KEY_DOWN:
+            camera.move_back(STEP_DEP);
+            break;
+        case GLUT_KEY_LEFT:
+            camera.move_left(STEP_DEP);
+            break;
+        case GLUT_KEY_RIGHT:
+            camera.move_right(STEP_DEP);
+            break;
         default :
             std::cerr<<"Touche speciale non fonctionnelle"<<std::endl;
     }
@@ -104,7 +111,7 @@ void Interface::idle_function()
 {
     root->animation();
     nb_turn++;
-	glutPostRedisplay();
+    glutPostRedisplay();
 };
 
 void Interface::reshape(int width, int height)
@@ -126,13 +133,13 @@ void Interface::init(void) {
     root->add_children(Scene::create_scene());
 
 
-	/// GL INITIALISATION
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
-	glShadeModel( GL_SMOOTH );
-	glDisable(GL_BLEND);
-	glCullFace(GL_BACK);
-	glDisable( GL_CULL_FACE );
+    /// GL INITIALISATION
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glShadeModel( GL_SMOOTH );
+    glDisable(GL_BLEND);
+    glCullFace(GL_BACK);
+    glDisable( GL_CULL_FACE );
 
 }
 
@@ -146,7 +153,7 @@ void Interface::reset(void) {
 }
 
 void Interface::draw(void) {
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     //glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
     glEnable(GL_DEPTH_TEST);
     root->draw(this -> camera);

@@ -6,6 +6,7 @@
     #include <castle.hpp>
     #include <onagre.hpp>
     #include <camera.hpp>
+    #include <light.hpp>
 
     class Interface
     {

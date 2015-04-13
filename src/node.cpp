@@ -41,7 +41,7 @@ int Node::add_children(Tree* T)
 
 void Node::draw(Camera cam)
 {
-    Matrix mt = cam.get_transformation();
+    Matrix mt = cam.get_projection() * cam.get_transformation();
     Matrix mn;
     this->sub_draw(mt, mn);
 }
