@@ -27,9 +27,9 @@
             void apply_rotation_on_y(float angle);
             void apply_rotation_on_z(float angle);
             void apply_rotation_on_y_first(float angle);
-            virtual void animation() = 0;
+            virtual void animation(int elapsed_time) = 0;
             virtual void draw(Camera cam) = 0;
-            virtual void sub_draw(Matrix mt, Matrix mn) = 0;
+            virtual void sub_draw(Matrix mt, Matrix mn, glm::vec3 cam_position) = 0;
     };
 
 #endif

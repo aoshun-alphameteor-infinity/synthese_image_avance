@@ -43,10 +43,10 @@ void Node::draw(Camera cam)
 {
     Matrix mt = cam.get_projection() * cam.get_transformation();
     Matrix mn;
-    this->sub_draw(mt, mn);
+    this->sub_draw(mt, mn, cam.get_position());
 }
 
-void Node::sub_draw(Matrix mt, Matrix mn)
+void Node::sub_draw(Matrix mt, Matrix mn, glm::vec3 cam_position)
 {
     unsigned int i;
     Matrix mat_d, mat_n;
@@ -55,12 +55,12 @@ void Node::sub_draw(Matrix mt, Matrix mn)
     mat_n = mn * this->Mn;
 
     for(i = 0; i < this->children.size(); i++)
-        this->children[i]->sub_draw(mat_d, mat_n);
+        this->children[i]->sub_draw(mat_d, mat_n, cam_position);
 }
 
-void Node::animation()
+void Node::animation(int elapsed_time)
 {
     unsigned int i;
     for(i = 0; i < this->children.size(); i++)
-        this->children[i]->animation();
+        this->children[i]->animation(elapsed_time);
 }

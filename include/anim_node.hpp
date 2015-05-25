@@ -1,23 +1,25 @@
 #ifndef __ANIM_NODE_H__
 #define __ANIM_NODE_H__
 
-    #include <node.hpp>
-    #define MAX_ROTATION_BY_TURN 2000
-    #define MAX_SELF_TURN 50
-    #define MAX_SPOON_TURN 20
+	#include <node.hpp>
+	
+    #define TIME_AROUND_CASTLE 25000
+    #define TIME_ROTATION_SELF 2500
+    #define TIME_SPOON_REACT 1000
+    #define RELOAD_TIME 8000
 
-    extern int nb_turn;
-    extern int fire_phasis;
-    extern bool mod_anim;
+	extern int phase_time;
+	extern int fire_phasis;
+	extern bool shoot_mod_anim;
 
-    class Anim_Node : public Node{
-        private:
-            void animate1();
-            void animate2();
-        public:
-            Anim_Node();
-            ~Anim_Node();
-            virtual void animation();
-    };
+	class Anim_Node : public Node{
+		private:
+			void animate1(int elapsed_time);
+			void animate2(int elapsed_time);
+		public:
+			Anim_Node();
+			~Anim_Node();
+			virtual void animation(int elapsed_time);		
+	};
 
 #endif

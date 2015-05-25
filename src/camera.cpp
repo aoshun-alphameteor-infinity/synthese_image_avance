@@ -52,7 +52,7 @@ void Camera::move_left(float step)
 void Camera::move_right(float step)
 {
     glm::vec3 left_vec = glm::cross(top_direction, view_direction);
-    position -= left_vec*step;
+    position -= left_vec * step;
 }
 
 void Camera::move_up(float step)
@@ -79,13 +79,13 @@ void Camera::look_down(float angle)
 
 void Camera::look_left(float angle)
 {
-    orientation.y -= angle;
+    orientation.y += angle;
     orientation_react();
 }
 
 void Camera::look_right(float angle)
 {
-    orientation.y += angle;
+    orientation.y -= angle;
     orientation_react();
 }
 

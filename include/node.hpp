@@ -19,8 +19,8 @@
             int add_child(Object3D* O, Shader* shader);
             int add_children(Tree* T);
             void draw(Camera cam);
-            void sub_draw(Matrix mt, Matrix mn);
-            virtual void animation();
+            virtual void sub_draw(Matrix mt, Matrix mn, glm::vec3 cam_position);
+            virtual void animation(int elapsed_time);
     };
 
 #endif

@@ -70,14 +70,14 @@ void Cylinder::init_canonical_cylinder(void)
     (*cylinder_index)[3 * (4 * NMAX - 1) + 1] = 2 * NMAX + 1;
     (*cylinder_index)[3 * (4 * NMAX - 1) + 2] = NMAX + 1;
 
-    double jmp = 1 / NMAX;
+    double jmp = 1. / NMAX;
     (*cylinder_texcoord)[0] = (*cylinder_texcoord)[1] = 1;
     for(i = 1; i < NMAX + 1; i++)
     {
-        (*cylinder_texcoord)[2 * i] = 0;
-        (*cylinder_texcoord)[2 * i + 1] = i * jmp;
-        (*cylinder_texcoord)[2 * (i + NMAX)] = 1;
-        (*cylinder_texcoord)[2 * (i + NMAX) + 1] = i * jmp;
+        (*cylinder_texcoord)[2 * i] = i * jmp;
+        (*cylinder_texcoord)[2 * i + 1] = 0;
+        (*cylinder_texcoord)[2 * (i + NMAX)] = i * jmp;
+        (*cylinder_texcoord)[2 * (i + NMAX) + 1] = 1;
     }
     (*cylinder_texcoord)[4 * NMAX + 2] = (*cylinder_texcoord)[4 * NMAX + 3] = 0;
 }

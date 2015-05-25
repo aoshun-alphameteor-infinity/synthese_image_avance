@@ -4,6 +4,7 @@
     #include <iostream>
     #include <stdexcept>
     #include <string>
+    #include <map>
     #include <cstring>
     #include <cstdlib>
     #include <GL/glew.h>
@@ -13,10 +14,14 @@
     #include <gl_tools.hpp>
 
     static const int nb_max_texture = 3;
+    extern const std::string shader_name;
 
     class Shader
     {
         private:
+            static std::map<std::string, GLuint> compiled;
+            static std::map<std::string, GLuint> charged;
+
             GLuint program;
             GLuint textures[nb_max_texture];
             int nb_texture;

@@ -20,8 +20,8 @@
         public:
             Leaf(Object3D* O, Shader* shader);
             ~Leaf();
-            virtual void animation(){};
-            virtual void sub_draw(Matrix mt, Matrix mn);
+            virtual void animation(int elapsed_time){};
+            virtual void sub_draw(Matrix mt, Matrix mn, glm::vec3 cam_position);
             virtual void draw(Camera cam);
     };
 

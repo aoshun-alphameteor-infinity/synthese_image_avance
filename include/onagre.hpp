@@ -12,10 +12,8 @@
     #include <anim_node.hpp>
     #include <object3D.hpp>
 
-
     class Onagre {
         private :
-            static Shader* s;
             static Tree* create_onagre_main_body(glm::vec4 color);
             static Tree* create_onagre_spoon(glm::vec4 color);
             static Tree* create_onagre_wheel(glm::vec4 color);

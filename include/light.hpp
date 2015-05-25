@@ -6,7 +6,8 @@
     #include <glm/glm.hpp>
     #include <glm/vec3.hpp>
 
-    typedef struct _spotlight{
+    typedef struct _spotlight
+    {
         glm::vec3 position;
         float angle;
         glm::vec3 direction;
@@ -15,10 +16,12 @@
         float intensity;
     } Spotlight;
 
-    typedef struct _pointlight{
+    typedef struct _pointlight
+    {
         glm::vec3 position;
-        glm::vec3 color;
         float intensity;
+        glm::vec3 color;
+        float _;
     } Pointlight;
 
 #endif

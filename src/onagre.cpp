@@ -1,11 +1,9 @@
 #include <onagre.hpp>
 
-Shader *Onagre::s = NULL;
-
-
 Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     Node* body;
     Object3D* obj;
+    Shader* s;
     glm::vec3 point;
     glm::vec3 vector;
 
@@ -18,12 +16,16 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = .5;
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = 0.;
@@ -33,6 +35,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.y = 0.;
@@ -40,6 +44,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.y = -.03;
@@ -48,12 +54,16 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.z = -.4;
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = 0.;
@@ -64,6 +74,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = .8;
@@ -74,6 +86,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = -.8;
@@ -81,6 +95,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = 0.;
@@ -91,6 +107,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_rotation_on_x(-PI/2.);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = .5;
@@ -101,12 +119,16 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = -.5;
     obj = new Cube(color);
     obj->apply_translation(point);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.y = .25;
@@ -117,6 +139,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(3*PI/4.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = .5;
@@ -124,6 +148,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(3*PI/4.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.y = .25;
@@ -132,6 +158,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(PI/4.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = -.5;
@@ -139,6 +167,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(PI/4.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = point.y = 0.;
@@ -150,6 +180,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_rotation_on_x(-PI/2.);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = .7;
@@ -160,6 +192,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = -.7;
@@ -167,6 +201,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.z = -.4;
@@ -174,6 +210,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     point.x = .7;
@@ -181,6 +219,8 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     body->add_child(obj, s);
 
     return body;
@@ -190,6 +230,7 @@ Tree* Onagre::create_onagre_main_body(glm::vec4 color) {
 Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     Node* spoon;
     Object3D* obj;
+    Shader* s;
     glm::vec3 point;
     glm::vec3 vector;
 
@@ -205,6 +246,8 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     vector.y = .61;
     obj = new Cylinder(color);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     spoon->add_child(obj, s);
 
     point.y = .23;
@@ -216,6 +259,8 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(-PI/3.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     spoon->add_child(obj, s);
 
     point.y = .53;
@@ -227,6 +272,8 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(PI/6.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     spoon->add_child(obj, s);
 
     point.y = .5;
@@ -239,6 +286,8 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_x(PI/6.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     spoon->add_child(obj, s);
 
     return spoon;
@@ -247,6 +296,7 @@ Tree* Onagre::create_onagre_spoon(glm::vec4 color) {
 Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     Node* wheel;
     Object3D* obj;
+    Shader* s;
     glm::vec3 point;
     glm::vec3 vector;
 
@@ -261,6 +311,8 @@ Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     wheel->add_child(obj, s);
 
     point.x = -.7;
@@ -268,6 +320,8 @@ Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     wheel->add_child(obj, s);
 
     point.x = .7;
@@ -276,6 +330,8 @@ Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     wheel->add_child(obj, s);
 
     point.x = -.7;
@@ -283,6 +339,8 @@ Tree* Onagre::create_onagre_wheel(glm::vec4 color) {
     obj->apply_translation(point);
     obj->apply_rotation_on_z(-PI/2.);
     obj->apply_homothety(vector);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/bois_1.jpg");
     wheel->add_child(obj, s);
 
     return wheel;
@@ -293,8 +351,6 @@ Tree* Onagre::create_onagre(glm::vec4 color) {
 
     glm::vec3 point(0., 0.048, 0.);
     glm::vec3 vector(.2, .2, .2);
-    if(s == NULL)
-        s = new Shader("base");
 
     onagre = new Anim_Node();
     onagre->apply_translation(point);

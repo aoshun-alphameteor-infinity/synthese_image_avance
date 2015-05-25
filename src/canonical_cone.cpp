@@ -46,13 +46,13 @@ void Cone::init_canonical_cone (void)
     (*cone_index)[3 * (2 * NMAX - 1) + 2] = 1;
 
     double jmp = 1 / NMAX;
-    (*cone_texcoord)[0] = (*cone_texcoord)[1] = 1;
+    (*cone_texcoord)[0] = (*cone_texcoord)[1] = 0.5;
     for(i = 1; i < NMAX + 1; i++)
     {
-        //(*cone_texcoord)[2 * i] = 0;
-        (*cone_texcoord)[2 * i + 1] = i * jmp;
+        (*cone_texcoord)[2 * i] = cos(i * alpha) / 2 + 0.5;
+        (*cone_texcoord)[2 * i + 1] = sin(i * alpha) / 2 + 0.5;
     }
-    (*cone_texcoord)[2 * NMAX + 2] = (*cone_texcoord)[2 * NMAX + 3] = 1;
+    (*cone_texcoord)[2 * NMAX + 2] = (*cone_texcoord)[2 * NMAX + 3] = 0.5;
 }
 
 Cone::Cone(glm::vec4 col) : Object3D(col)

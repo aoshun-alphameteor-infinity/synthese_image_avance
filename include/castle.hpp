@@ -12,10 +12,10 @@
 
     static glm::vec4 red(0.50, 0.12, 0.12, 1.00);
     static glm::vec4 yellow(0.25, 0.25, 0.12, 1.00);
+    static glm::vec4 white(1., 1., 1., 1.);
 
     class Castle{
         private:
-            static Shader* s;
             static Tree* create_tower_top(void);
             static Tree* create_tower(void);
             static Tree* create_wall(void);

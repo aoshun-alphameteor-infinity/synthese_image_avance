@@ -3,10 +3,8 @@
 
     #include <scene.hpp>
     #include <tree.hpp>
-    #include <castle.hpp>
-    #include <onagre.hpp>
     #include <camera.hpp>
-    #include <light.hpp>
+    #include <timer.hpp>
 
     class Interface
     {
@@ -15,6 +13,17 @@
             int height;
             unsigned int display_mode;
             Camera camera;
+            Timer timer;
+
+            void canonical_delete()
+            {
+                Cone::cone_delete();
+                Cube::cube_delete();
+                Cylinder::cylinder_delete();
+                Horn::horn_delete();
+                Sphere::sphere_delete();
+                Tore::tore_delete();
+            };
 
         public:
             Interface(int width, int height);

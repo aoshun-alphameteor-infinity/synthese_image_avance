@@ -1,12 +1,12 @@
 #include <castle.hpp>
 
-Shader *Castle::s = NULL;
 glm::vec4 color(.5, 0., .7, 1.);
 
 Tree* Castle::create_tower_top(void){
     Node* top = new Node();
     Object3D* objet;
     glm::vec3 point, vecteur;
+    Shader* s;
 
     point.x = point.z = 0.0;
 
@@ -16,11 +16,17 @@ Tree* Castle::create_tower_top(void){
     vecteur.y = 1.0;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/gate.jpg");
+    s -> attach_texture("textures/pure_white.png");
     top -> add_child(objet, s);
 
     objet = new Cone(red);
     point.y = 1.0;
     objet -> apply_translation(point);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/gate.jpg");
+    s -> attach_texture("textures/pure_white.png");
     top -> add_child(objet, s);
 
     objet = new Tore(red);
@@ -29,6 +35,9 @@ Tree* Castle::create_tower_top(void){
     vecteur.x = vecteur.y = 0.3;
     vecteur.z = 0.25;
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/gate.jpg");
+    s -> attach_texture("textures/pure_white.png");
     top -> add_child(objet, s);
 
     return top;
@@ -41,13 +50,18 @@ Tree* Castle::create_tower(void){
     Node* tower = new Node();
     Tree* piece;
     Object3D* objet;
+    Shader* s;
     glm::vec3 h(0.65, 1.2, 0.65);
 
     piece = create_tower_top();
     tower -> add_children(piece);
 
-    objet = new Cylinder(yellow);
+    objet = new Cylinder(white);
     objet -> apply_homothety(h);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     tower -> add_child(objet, s);
 
     return tower;
@@ -59,16 +73,21 @@ Tree* Castle::create_tower(void){
 Tree* Castle::create_wall(void){
     Node* wall = new Node();
     Object3D* objet;
+    Shader* s;
     glm::vec3 point, vecteur;
 
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     vecteur.x = 0.4;
     vecteur.z = 3.0;
     vecteur.y = 2.0;
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     wall -> add_child(objet, s);
 
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     point.x = -0.40;
     point.z = 0.0;
     point.y = 1.85;
@@ -77,6 +96,10 @@ Tree* Castle::create_wall(void){
     vecteur.y = 0.6;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     wall -> add_child(objet, s);
 
     return wall;
@@ -88,6 +111,7 @@ Tree* Castle::create_wall(void){
 Tree* Castle::create_wall_with_gate(void){
     Node* wall = new Node();
     Object3D* objet;
+    Shader* s;
     glm::vec3 point, vecteur;
 
     objet = new Cube(red);
@@ -95,9 +119,12 @@ Tree* Castle::create_wall_with_gate(void){
     vecteur.z = 0.8;
     vecteur.y = 1.5;
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/gate.jpg");
+    s -> attach_texture("textures/pure_white.png");
     wall -> add_child(objet, s);
 
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     point.x = point.y = 0.0;
     point.z = 1.9;
     vecteur.x = 0.4;
@@ -105,9 +132,13 @@ Tree* Castle::create_wall_with_gate(void){
     vecteur.y = 1.5;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     wall -> add_child(objet, s);
 
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     point.x = point.y = 0.0;
     point.z = -1.9;
     vecteur.x = 0.4;
@@ -115,9 +146,13 @@ Tree* Castle::create_wall_with_gate(void){
     vecteur.y = 1.5;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     wall -> add_child(objet, s);
 
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     point.x = point.z = 0.0;
     point.y = 1.9;
     vecteur.x = 0.4;
@@ -125,9 +160,13 @@ Tree* Castle::create_wall_with_gate(void){
     vecteur.y = 0.5;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     wall -> add_child(objet, s);
 
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     point.x = -0.40;
     point.z = 0.0;
     point.y = 2.25;
@@ -136,6 +175,10 @@ Tree* Castle::create_wall_with_gate(void){
     vecteur.y = 0.6;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     wall -> add_child(objet, s);
 
     return wall;
@@ -148,17 +191,21 @@ Tree* Castle::create_castle(void){
     Node* castle = new Node();
     Tree* piece;
     Object3D* objet;
+    Shader* s;
     glm::vec3 point, vecteur;
-    s = new Shader("base");
 
     /* dungeon */
-    objet = new Cube(yellow);
+    objet = new Cube(white);
     point.x = point.z = 0.0;
     point.y = 3.0;
     vecteur.x = vecteur.z = 2.0;
     vecteur.y = 3.0;
     objet -> apply_translation(point);
     objet -> apply_homothety(vecteur);
+    s = new Shader(shader_name);
+    s -> attach_texture("textures/spnza_bricks_a_diff.tga");
+    s -> attach_texture("textures/spnza_bricks_a_spec.tga");
+    s -> attach_texture("textures/spnza_bricks_a_bump.tga");
     castle -> add_child(objet, s);
 
     /* towers of the dungeon */
@@ -333,6 +380,6 @@ Tree* Castle::create_castle(void){
     castle -> add_children(piece);
 
     vecteur.x = vecteur.y = vecteur.z = 0.2;
-    castle->apply_homothety(vecteur);
+    castle -> apply_homothety(vecteur);
     return castle;
 }
